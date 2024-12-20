@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vite + Vue + TS + H5</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts">
+    </script>
+    <script>
+      // 禁止双击缩放
+      document.addEventListener('dblclick', function(e) {
+          e.preventDefault(); // 阻止双击事件
+      });
+
+      // 禁止触摸屏上的缩放（尤其是双指缩放）
+      document.addEventListener('touchstart', function(e) {
+          if (e.touches.length > 1) {
+              e.preventDefault(); // 阻止多指操作
+          }
+      }, { passive: false });
+
+      // 禁止触摸滑动时缩放
+      document.addEventListener('touchmove', function(e) {
+          if (e.scale !== 1) {
+              e.preventDefault(); // 阻止缩放
+          }
+      }, { passive: false });
+
+    </script>
+  </body>
+</html>

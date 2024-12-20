@@ -1,0 +1,43 @@
+@for $num from 1 to 2000 {
+    .w-#{$num} {
+        width: #{$num}px;
+    }
+    .h-#{$num} {
+        height: #{$num}px;
+    }
+    .m-#{$num} {
+        margin: #{$num}px;
+    }
+    .mt-#{$num} {
+        margin-top: #{$num}px;
+    }
+    .mr-#{$num} {
+        margin-right: #{$num}px;
+    }
+    .mb-#{$num} {
+        margin-bottom: #{$num}px;
+    }
+    .ml-#{$num} {
+        margin-left: #{$num}px;
+    }
+    .p-#{$num} {
+        padding: #{$num}px;
+    }
+    .pt-#{$num} {
+        padding-top: #{$num}px;
+    }
+    .pr-#{$num} {
+        padding-right: #{$num}px;
+    }
+    .pb-#{$num} {
+        padding-bottom: #{$num}px;
+    }
+    .pl-#{$num} {
+        padding-left: #{$num}px;
+    }
+    .fz-#{$num} {
+        font-size: 1px * $num;
+    }
+}
+
+

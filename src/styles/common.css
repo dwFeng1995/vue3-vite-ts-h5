@@ -1,0 +1,39 @@
+.flex {
+    display: flex;
+}
+.flex-dc {
+    flex-direction: column;
+}
+.flex1 {
+    flex:1
+}
+.flex-sh {
+    flex-shrink: 0;
+}
+.flex-wrap {
+    flex-wrap: wrap;
+}
+.flex-jc {
+    justify-content: center;
+}
+.flex-jsb{
+    justify-content: space-between;
+}
+.flex-jsa{
+    justify-content: space-around;
+}
+.flex-jse{
+    justify-content: space-evenly;
+}
+.flex-hc{
+    align-items: center;
+}
+.flex-hs{
+    align-items: flex-start;
+}
+.flex-he{
+    align-items: flex-end;
+}
+.va-b{
+    vertical-align: text-bottom;
+}
