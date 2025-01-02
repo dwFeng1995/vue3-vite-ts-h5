@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",  // 设置基准路径
+    "paths": {
+      "@/*": ["src/*"]  // 将 '@' 指向 'src' 目录
+    },
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",

@@ -37,10 +37,10 @@ export default {
     if (binding.value !== binding.oldValue) {
       if (binding.value) {
         const loadingVNode = createVNode(Loading, {
-          text: binding.arg || '加载中...',
-          spinnerType: binding.modifiers.spinner || 'circle',
-          background: binding.modifiers.bg || 'rgba(0, 0, 0, 0.5)',
-          fullscreen: binding.modifiers.fullscreen || false
+          text: binding.arg || '加载中...', // 设置加载文案，默认显示 '加载中...'
+          type: binding.modifiers.spinner || 'spinner', // 加载动画类型，可传递 'circle', 'round' 等
+          color: binding.modifiers.bg || '#1989fa', // 背景色
+          fullscreen: binding.modifiers.fullscreen || false, // 是否全屏加载
         })
 
         // 更新 VNode

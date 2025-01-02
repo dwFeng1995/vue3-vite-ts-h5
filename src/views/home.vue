@@ -10,7 +10,7 @@
         v-for="(item, index) in tabData" :key="item.id">{{ item.label }}</div>
     </div>
     <div class="list-box">
-      <van-pull-refresh v-model="refreshing" @refresh="onRefresh" style="height: 100%;">
+      <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
         <van-list offset="10" v-model:loading="loading" :immediate-check="false" :finished="finished"
           finished-text="没有更多了" @load="onLoad">
           <ArticlesList :articlesData='articlesData' />
@@ -23,15 +23,17 @@
 
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue';
-import { getArticleApi } from '../utils/api'
-import type { ArticleRes } from '../utils/api';
+import { getArticleApi } from '@/utils/api'
+import type { ArticleRes } from '@/utils/api';
 import ArticlesList from './components/articlesList.vue'
 const tabIndex = ref(0)
 const tabData = reactive([
   {id: 1,label: '全部',value: ''},
   {id: 2,label: '关注',value: '1'},
   {id: 3,label: '问答',value: '2'},
-  {id: 4,label: '学习',value: '3'}
+  {id: 4,label: '学习',value: '3'},
+  {id: 4,label: '学习',value: '3'},{id: 4,label: '学习',value: '3'}
+  
 ])
 // const type = ref<ArticleType>('front')
 const articlesData = ref<ArticleRes['articles']>([])
