@@ -18,6 +18,14 @@
     <div class="flex flex-jc mt-30">
       <span>还没有账号？</span><span class="underline-text" @click="toRegister">去注册</span>
     </div>
+    <!-- <Component
+     :is="renderForm()"
+    /> -->
+    <MyForm
+      :form-list="formList"
+      v-model="fromModelValue"
+    />
+    {{ fromModelValue }}
   </div>
 
 
@@ -26,6 +34,7 @@
 
 <script setup lang='ts'>
 import { showToast } from 'vant';
+import { MyForm} from '../components/form.ts';
 import { ref } from 'vue';
 import { useRouter } from "vue-router"
 import { loginApi } from '../utils/api'
@@ -49,7 +58,31 @@ const toRegister = () => {
   router.push('/register')
 }
 
+const formList = [
+   {
+    component: 'Field',
+    props: {
+        label: '用户名',
+    },
+    ext: {
+        key: 'username'
+    }
+   },
+   {
+    component: 'Field',
+    props: {
+        label: '密码',
+    },
+    ext: {
+        key: 'password'
+    }
+   }
+]
 
+const fromModelValue = ref<Record<string, any>>({
+  username: 'zs',
+  password: '1234'
+})
 </script>
 <style lang="scss" scoped>
 @import url('../styles/common.css');

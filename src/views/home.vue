@@ -28,10 +28,10 @@ import type { ArticleRes } from '@/utils/api';
 import ArticlesList from './components/articlesList.vue'
 const tabIndex = ref(0)
 const tabData = reactive([
-  {id: 1,label: '全部',value: ''},
-  {id: 2,label: '关注',value: '1'},
-  {id: 3,label: '问答',value: '2'},
-  {id: 4,label: '学习',value: '3'},
+  {id: 1,label: '全部',value: '',checked:true},
+  {id: 2,label: '关注',value: '1',checked:false},
+  {id: 3,label: '问答',value: '2',checked:false},
+  {id: 4,label: '学习',value: '3',checked:false},
   {id: 4,label: '学习',value: '3'},{id: 4,label: '学习',value: '3'}
   
 ])
