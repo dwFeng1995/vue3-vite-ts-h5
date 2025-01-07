@@ -18,6 +18,7 @@
     <div class="flex flex-jc mt-30">
       <span>还没有账号？</span><span class="underline-text" @click="toRegister">去注册</span>
     </div>
+    
     <!-- <Component
      :is="renderForm()"
     /> -->

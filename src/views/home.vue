@@ -36,6 +36,12 @@ const tabData = reactive([
   
 ])
 // const type = ref<ArticleType>('front')
+const aaa = ref<Record<string, any>[]>([{id: 1,label: '全部',value: '',checked:true},
+  {id: 2,label: '关注',value: '1',checked:false},
+  {id: 3,label: '问答',value: '2',checked:false},
+  {id: 4,label: '学习',value: '3',checked:false},
+  {id: 4,label: '学习333',value: '3'},{id: 4,label: '学习',value: '3'}])
+console.log(aaa.value)
 const articlesData = ref<ArticleRes['articles']>([])
 const searchValue = ref<string>('')
 const page = ref<number>(1);
