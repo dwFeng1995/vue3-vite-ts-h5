@@ -9,6 +9,9 @@ import loadingDirective from './directives/loading'  // 引入自定义指令
 // 注册全局自定义指令
 import './styles/font.scss'
 import './styles/global.scss'
+import 'tailwindcss/tailwind.css'
+import './styles/tailwind.css'
+
 // 2. 引入组件样式
 import 'vant/lib/index.css';
 console.log('环境变量：',import.meta.env)

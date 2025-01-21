@@ -63,6 +63,13 @@ export type ArticleRes = {
     totalPages: number
 }
 
+export type ArticleDetailRes = {
+    article: {
+        detail:Object
+    }
+}
+
+
 const ARTICLE_TYPE = {
    FRONT: 'front',
    JAVA: 'java',
@@ -77,6 +84,15 @@ export type ArticleType = typeof ARTICLE_TYPE[keyof typeof ARTICLE_TYPE]
 //获取用户文章列表
 export function getArticleApi(data = {}) {
     return httpRequest<ArticleRes>('/article/list', {
+        data,
+        type: 'post',
+        headers: {}
+    })
+}
+
+//获取用户文章详情
+export function getArticleDetailApi(data = {}) {
+    return httpRequest<ArticleDetailRes>('/article/detail', {
         data,
         type: 'post',
         headers: {}

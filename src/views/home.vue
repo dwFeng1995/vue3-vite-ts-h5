@@ -2,7 +2,7 @@
   <div class="top-box"></div>
   <div class="main-contain pt-100">
 
-    <div ref="container" style="height: 404px;">
+    <div ref="container">
       <van-sticky :offset-top="100" :container="container">
         <van-search v-model="searchValue" show-action placeholder="请输入搜索关键词" @search="onSearch">
           <template #action>
@@ -11,6 +11,11 @@
         </van-search>
       </van-sticky>
     </div>
+
+    <ArticleDetail 
+    :class = "['aaa',true && 'bbb']"
+     
+    class=" mt-[10px]  text-center hover:text-[red]" :detailInfo="detailInfo.info" />
 
     <van-sticky :offset-top="100">
       <div class="tab-list">
@@ -32,9 +37,11 @@
 
 <script setup lang="ts">
 import { onMounted, reactive, ref } from 'vue';
-import { getArticleApi } from '@/utils/api'
+import { getArticleApi,getArticleDetailApi } from '@/utils/api'
 import type { ArticleRes } from '@/utils/api';
 import ArticlesList from './components/articlesList.vue'
+import ArticleDetail from './components/articleDetail.vue'
+
 const tabIndex = ref(0)
 const tabData = reactive([
   { id: 1, label: '全部', value: '', checked: true },
@@ -44,6 +51,12 @@ const tabData = reactive([
   { id: 4, label: '学习', value: '3' }, { id: 4, label: '学习', value: '3' }
 
 ])
+type Aaa ={
+  info: {
+    
+  }
+}
+let detailInfo = reactive<Aaa>({info:{}})
 // const type = ref<ArticleType>('front')
 const aaa = ref<Record<string, any>[]>([{ id: 1, label: '全部', value: '', checked: true },
 { id: 2, label: '关注', value: '1', checked: false },
@@ -81,7 +94,18 @@ const onRefresh = () => {
 };
 onMounted(() => {
   onLoad()
+  getArticleDetail()
 })
+const getArticleDetail = async () => {
+  const res = await getArticleDetailApi({
+    id:1
+  })
+  
+  console.log('获取文章详情', res)
+  detailInfo.info = res.article
+  console.log('获取文章详情detailInfo--', detailInfo)
+
+}
 const getArticleList = async () => {
   if (refreshing.value) {
     articlesData.value = []

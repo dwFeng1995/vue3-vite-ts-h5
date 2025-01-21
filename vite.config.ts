@@ -5,6 +5,8 @@ import pxToViewport from 'postcss-px-to-viewport-8-plugin'
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from '@vant/auto-import-resolver';
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -19,6 +21,8 @@ export default defineConfig({
   css:{
     postcss:{
         plugins:[
+          tailwindcss, 
+          autoprefixer,
           pxToViewport({
             unitToConvert: "px", // 要转化的单位
             viewportWidth: 375, // UI设计稿的宽度
