@@ -41,6 +41,7 @@ import { getArticleApi,getArticleDetailApi } from '@/utils/api'
 import type { ArticleRes } from '@/utils/api';
 import ArticlesList from './components/articlesList.vue'
 import ArticleDetail from './components/articleDetail.vue'
+// import {defa} from 'lodash-es'
 
 const tabIndex = ref(0)
 const tabData = reactive([
