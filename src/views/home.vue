@@ -2,7 +2,7 @@
   <div class="top-box"></div>
   <div class="main-contain pt-100">
 
-    <div ref="container">
+    <div ref="container" class="h-300">
       <van-sticky :offset-top="100" :container="container">
         <van-search v-model="searchValue" show-action placeholder="请输入搜索关键词" @search="onSearch">
           <template #action>
@@ -42,6 +42,7 @@ import type { ArticleRes } from '@/utils/api';
 import ArticlesList from './components/articlesList.vue'
 import ArticleDetail from './components/articleDetail.vue'
 // import {defa} from 'lodash-es'
+import { cloneDeep, orderBy, omit, pick, groupBy, intersection, difference} from 'lodash-es'
 
 const tabIndex = ref(0)
 const tabData = reactive([

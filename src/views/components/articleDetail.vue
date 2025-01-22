@@ -1,6 +1,6 @@
 <template>
 
-  <div class="h-300">{{ detail.author_name }}</div>
+  <div>{{ detail.author_name }}</div>
 
 </template>
 
