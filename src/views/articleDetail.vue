@@ -60,9 +60,7 @@ const getArticleDetail = async () => {
     id: Number(hooks.route.query.articleId)
   })
 
-  console.log('获取文章详情', res)
   detailInfo = res.article
-  console.log('获取文章详情detailInfo--', detailInfo)
 
 }
 </script>
@@ -71,7 +69,8 @@ const getArticleDetail = async () => {
   border-radius: 8px 8px 0 0;
   padding-left: 10px;
   margin-top: 10px;
-  .comment-value{
+
+  .comment-value {
     font-size: 16px;
     color: #272d4d;
   }
