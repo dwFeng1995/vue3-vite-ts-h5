@@ -1,22 +1,14 @@
 
 
 <template>
-  <div class="app">
-    <!-- <NavBar v-if="!isShowTabBar"/> -->
+  <div class="app h-full w-full">
     <router-view></router-view>
-    <!-- <TabBar v-if="isShowTabBar"/> -->
   </div>
 </template>
 
 <script setup lang="ts">
-import TabBar from './components/tabBar.vue';
-// import NavBar from './components/navBar.vue';
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
-const route = useRoute();
-const isShowTabBar = computed(()=>{
-  return route.meta.tabBar
-})
 </script>
 
 <style>

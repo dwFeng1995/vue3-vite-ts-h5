@@ -1,19 +1,18 @@
 <template>
 
-    <van-nav-bar :title="title" left-text="返回" right-text="按钮" left-arrow />
+    <van-nav-bar @click-left="onClickLeft" :title="title" left-text="返回" right-text="按钮" left-arrow />
 
 </template>
 
 <script setup lang='ts'>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-// const router = useRouter();
-const route = useRoute();
-// const onClickLeft = () => {
-//     router.go(-1)
-// }
+import useCommon from '@/hooks/useCommon'
+const hooks = useCommon()
+const onClickLeft = () => {
+    history.back();
+}
 const title:any = computed(() => {
-    return route.meta.title
+    return hooks.route.meta.title
 }) 
 </script>
 <style scoped></style>

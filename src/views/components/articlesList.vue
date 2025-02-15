@@ -1,7 +1,7 @@
 <template>
   
     <div class="wrap-list">
-      <div class="wrap-item" v-for="(item) in props.articlesData" :key="item.id">
+      <div class="wrap-item" v-for="(item) in articlesData" :key="item.id" @click="toDetail(item.id)">
         <div>
           <span class="p-name">{{ item.author_name }}</span>
         </div>
@@ -14,11 +14,11 @@
                 <span>阅读</span>
               </div>
               <div class="flex flex-hc mr-14">
-                <span>18</span>
+                <span>{{ item.like_count }}</span>
                 <span>点赞</span>
               </div>
               <div class="flex flex-hc">
-                <span>18</span>
+                <span>{{ item.like_count }}</span>
                 <span>收藏</span>
               </div>
             </div>
@@ -34,6 +34,9 @@
 import type { ArticlesItem } from '../../utils/api';
 import type { PropType } from 'vue';
 import { watch } from 'vue';
+import useCommon from '@/hooks/useCommon'
+const hooks = useCommon()
+console.log('hooks',hooks)
 const props = defineProps({
   articlesData: {
     type: Array as PropType<ArticlesItem[]>,
@@ -43,13 +46,17 @@ const props = defineProps({
 watch(() => props.articlesData, () => {
   // console.log('子组件---', props.articlesData)
 }, { deep: true })
+
+const toDetail = (id:number)=>{
+  hooks.router.push({path:'/articleDetail',query:{articleId:id}})
+}
 </script>
 <style lang="scss" scoped>
 @import url('../../styles/common.css');
 
 .wrap-list {
   padding: 0 12px;
-
+  margin-top: 10px;
   .wrap-item {
     padding: 12px;
     background-color: #fff;

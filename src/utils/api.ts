@@ -98,3 +98,12 @@ export function getArticleDetailApi(data = {}) {
         headers: {}
     })
 }
+
+//获取用户文章浏览量
+export function getArticleViewApi(data = {}) {
+    return httpRequest<ArticleDetailRes>('/article/view', {
+        data,
+        type: 'post',
+        headers: {}
+    })
+}

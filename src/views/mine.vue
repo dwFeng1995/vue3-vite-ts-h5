@@ -5,7 +5,7 @@
       <img class="head-picture" src="../assets/images/bg_art.png" alt="">
       <p class="my-name">张三</p>
     </div>
-    <img class="w-11 h-20" src="../assets/images/right_icon.png" alt="">
+    <img class="w-5 h-5" src="../assets/images/right_icon.png" alt="">
   </div>
   <div class="pl-24">
     <p @click="logoutHandle" class="my-name">退出登录</p>

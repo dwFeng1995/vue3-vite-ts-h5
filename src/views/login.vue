@@ -1,7 +1,7 @@
 <template>
   <div class="pl-19 pr-19">
-    <p class="fz-19">登录</p>
-    <div class="input-wrap">
+    <p class="fz-19 mt-10">登录</p>
+    <div class="input-wrap mt-10">
       <van-cell-group inset>
         <van-field v-model="username" placeholder="请输入用户名" />
         <van-field v-model="password" placeholder="请输入密码" />
@@ -12,7 +12,7 @@
       <div></div>
       <div>忘记密码</div>
     </div>
-    <div class="flex flex-jc mt-24">
+    <div class="flex flex-jc mt-10">
       <van-button type="primary" @click="login">登录</van-button>
     </div>
     <div class="flex flex-jc mt-30">
@@ -22,11 +22,11 @@
     <!-- <Component
      :is="renderForm()"
     /> -->
-    <MyForm
+    <!-- <MyForm
       :form-list="formList"
       v-model="fromModelValue"
     />
-    {{ fromModelValue }}
+    {{ fromModelValue }} -->
   </div>
 
 

@@ -22,16 +22,28 @@ export const constantroute = [
         component:() => import("../views/home.vue"),
         meta: {
             title:'首页',
-            tabBar: true
-        }
+        },
+        redirect: 'home/article',
+        children: [
+            {
+                path:'/home/article',
+                name:'Article',
+                component:() => import("../views/articlelist.vue"),
+            },
+            {
+                path:'/home/me',
+                name:'MyInfo',
+                component:() => import("../views/mine.vue"),
+            }
+        ]
     },
     {
-        path:'/mine',
-        name:'Mine',
-        component:() => import("../views/mine.vue"),
+        path:'/articleDetail',
+        name:'ArticleDetail',
+        component:() => import("../views/articleDetail.vue"),
         meta: {
-            title:'我的',
-            tabBar: true
+            title:'文章详情',
+            tabBar: false
         }
     },
 ]
