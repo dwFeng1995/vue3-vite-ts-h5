@@ -24,11 +24,26 @@
     </div>
   </div>
 
-  <van-popup v-model:show="showBottomPopup" round position="bottom" class="comment-list" :style="{ height: '80%' }">
+  <van-popup v-model:show="showBottomPopup" round position="bottom" class="flex flex-col" :style="{ height: '80%' }">
     <div class="popup-header flex items-center justify-between">
-      <svg-icon name="close" width="20px" height="20px"></svg-icon>
+      <svg-icon name="close" width="20px" height="20px" @click="() => showBottomPopup = false"></svg-icon>
       <div class="comment-value">全部21条评论</div>
-      <div class="close-btn"></div>
+      <div></div>
+    </div>
+    <div class=" flex-1 overflow-y-auto">
+      <div class="p-3 mt-3 border-t-[1px] border-[#eee]">
+        <div class=" flex items-center">
+          <svg-icon name="headPic" width="20px" height="20px"></svg-icon>
+          <span class="text-[13px] text-[#000]  font-bold ml-2">张三</span>
+        </div>
+        <p class="ml-29 text-[13px]">防腐剂哦的风景发呆发剪短发就发呆发剪短发家</p>
+        <p class="ml-29 text-[12px]">11小时</p>
+      </div>
+
+    </div>
+    <div class="h-[50px] p-3 border-t-[1px] border-[#eee] flex items-center">
+      <svg-icon name="headPic" width="20px" height="20px"></svg-icon>
+      <van-field v-model="commentContent" placeholder="写评论..." />
     </div>
   </van-popup>
 </template>
@@ -41,6 +56,7 @@ import useCommon from '@/hooks/useCommon'
 const hooks = useCommon()
 let detailInfo = reactive({})
 const showBottomPopup = ref(false)
+const commentContent = ref('')
 onMounted(() => {
   console.log('接收参数', hooks.route)
   getArticleView()
