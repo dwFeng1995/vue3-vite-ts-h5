@@ -11,11 +11,14 @@
         </van-sticky>
       </div>
       <van-sticky :offset-top="100">
-        <van-tabs v-model:active="activeTab" @click="onClickTab">
-            <van-tab :title="item.label" v-for="(item,index) in tabData"></van-tab>
-        </van-tabs>
+        <div class="relative pl-3 pr-3">
+            <van-tabs v-model:active="activeTab" @click="onClickTab">
+              <van-tab :title="item.label" v-for="item in tabData"></van-tab>
+          </van-tabs>
+          <div class="right_box"></div>
+        </div>
       </van-sticky>
-      <div class="list-box">
+      <div>
         <van-pull-refresh v-model="refreshing" @refresh="onRefresh">
           <van-list offset="10" v-model:loading="loading" :immediate-check="false" :finished="finished"
             finished-text="没有更多了" @load="onLoad">
@@ -28,19 +31,18 @@
   </template>
   
   <script setup lang="ts">
-  import { onMounted, reactive, ref } from 'vue';
+  import { onMounted, ref } from 'vue';
   import { getArticleApi } from '@/utils/api'
   import type { ArticleRes } from '@/utils/api';
   import ArticlesList from '@/views/components/articlesList.vue'
-  import { cloneDeep, orderBy, omit, pick, groupBy, intersection, difference} from 'lodash-es'
+  // import { cloneDeep, orderBy, omit, pick, groupBy, intersection, difference} from 'lodash-es'
   
-  const tabIndex = ref(0)
-  type Aaa ={
-    info: {
+  // type Aaa ={
+  //   info: {
       
-    }
-  }
-  let detailInfo = reactive<Aaa>({info:{}})
+  //   }
+  // }
+  // let detailInfo = reactive<Aaa>({info:{}})
   // const type = ref<ArticleType>('front')
   const tabData = ref<Record<string, any>[]>([{ id: 1, label: '全部', value: '', checked: true },
   { id: 2, label: '关注', value: '1'},
@@ -58,7 +60,7 @@
   const loading = ref<boolean>(false);//将 loading 设置为 true，表示处于加载状态，不触发load事件，false--触发
   const finished = ref<boolean>(false);//将 finished 设置为 true，表示处于已加载完成，不触发load事件，false--触发
   const total = ref(0)
-  const container = ref(null);
+  const container = ref<Object as PropType<Element>>(null);
   const activeTab = ref('')
   const onClickTab = () =>{
     console.log('activeTab---',activeTab)
@@ -114,9 +116,6 @@
     console.log('获取文章列表长度', articlesData.value.length)
     console.log('获取文章列表总数', total.value)
   }
-  const clickTab = (index: number) => {
-    tabIndex.value = index
-  }
   </script>
   
   <style lang="scss" scoped>
@@ -134,10 +133,14 @@
   .main-contain {
     background-color: #F2F4FA;
   }
-  
-  .list-box {
-     //height: calc(100vh - 127px);
-    // overflow-y: auto;
+  .right_box{
+    width: 10px;
+    height: 44px;
+    background-color: #fff;
+    opacity: 0.8;
+    position: absolute;
+    right: 12px;
+    top: 0;
   }
   
   .tab-list {

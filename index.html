@@ -24,11 +24,11 @@
       // }, { passive: false });
 
       // 禁止触摸滑动时缩放
-      // document.addEventListener('touchmove', function(e) {
-      //     if (e.scale !== 1) {
-      //         e.preventDefault(); // 阻止缩放
-      //     }
-      // }, { passive: false });
+      document.addEventListener('touchmove', function(e) {
+          if (e.scale !== 1) {
+              e.preventDefault(); // 阻止缩放
+          }
+      }, { passive: false });
 
     </script>
   </body>

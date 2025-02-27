@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": ".",  // 设置基准路径
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
+    ],
     "paths": {
       "@/*": ["src/*"]  // 将 '@' 指向 'src' 目录
     },
@@ -25,5 +29,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue","src/types/*.d.ts"]
 }

@@ -34,12 +34,13 @@
 </template>
 
 <script setup lang='ts'>
-import { showToast } from 'vant';
-import { MyForm} from '../components/form.ts';
+// import { showToast } from 'vant';
+// import { MyForm} from '../components/form.ts';
 import { ref } from 'vue';
 import { useRouter } from "vue-router"
 import { loginApi } from '../utils/api'
 import useUserStore from '../store/modules/useInfo';
+import { showToast } from 'vant';
 const userStore = useUserStore();
 const router = useRouter();
 const username = ref('');
@@ -59,31 +60,31 @@ const toRegister = () => {
   router.push('/register')
 }
 
-const formList = [
-   {
-    component: 'Field',
-    props: {
-        label: '用户名',
-    },
-    ext: {
-        key: 'username'
-    }
-   },
-   {
-    component: 'Field',
-    props: {
-        label: '密码',
-    },
-    ext: {
-        key: 'password'
-    }
-   }
-]
+// const formList = [
+//    {
+//     component: 'Field',
+//     props: {
+//         label: '用户名',
+//     },
+//     ext: {
+//         key: 'username'
+//     }
+//    },
+//    {
+//     component: 'Field',
+//     props: {
+//         label: '密码',
+//     },
+//     ext: {
+//         key: 'password'
+//     }
+//    }
+// ]
 
-const fromModelValue = ref<Record<string, any>>({
-  username: 'zs',
-  password: '1234'
-})
+// const fromModelValue = ref<Record<string, any>>({
+//   username: 'zs',
+//   password: '1234'
+// })
 </script>
 <style lang="scss" scoped>
 @import url('../styles/common.css');

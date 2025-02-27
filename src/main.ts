@@ -6,24 +6,16 @@ import svgIcon from "@/components/SvgIcon.vue";
 import 'virtual:svg-icons-register'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 pinia.use(piniaPluginPersistedstate);
-import { Tabbar, TabbarItem ,Checkbox,Loading,NavBar} from 'vant'
 import loadingDirective from './directives/loading'  // 引入自定义指令
 // 注册全局自定义指令
 import './styles/font.scss'
 import './styles/global.scss'
 import 'tailwindcss/tailwind.css'
 import './styles/tailwind.css'
-
-// 2. 引入组件样式
-import 'vant/lib/index.css';
-console.log('环境变量：',import.meta.env)
+import 'vant/es/toast/style';
+import 'vant/es/dialog/style';
 const app = createApp(App)
 app.use(router).use(pinia)
-app.use(Tabbar);
-app.use(TabbarItem);
-app.use(Checkbox);
-app.use(Loading);
-app.use(NavBar);
 app.component('svg-icon', svgIcon)
 app.directive('loading', loadingDirective)
 

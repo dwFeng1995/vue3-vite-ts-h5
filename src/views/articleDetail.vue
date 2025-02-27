@@ -37,30 +37,77 @@
           <span class="text-[13px] text-[#000]  font-bold ml-2">张三</span>
         </div>
         <p class="ml-29 text-[13px]">防腐剂哦的风景发呆发剪短发就发呆发剪短发家</p>
-        <p class="ml-29 text-[12px]">11小时</p>
+        <p class="ml-29 text-[12px]">
+          11小时前
+          <span class="text-[skyblue]">回复</span>
+        </p>
       </div>
-
     </div>
-    <div class="h-[50px] p-3 border-t-[1px] border-[#eee] flex items-center">
+    <van-field v-show="isFixedInput" ref="inputbox" :style="{position:'fixed',bottom:keyboardHeight+'px'}" v-model="inputValue" @focus="handleFocus" @blur="handleBlur" placeholder="写评论..." />
+    <div class="h-[50px] p-3 border-t-[1px] border-[#eee] flex items-center" @click="onClickWrite">
       <svg-icon name="headPic" width="20px" height="20px"></svg-icon>
-      <van-field v-model="commentContent" placeholder="写评论..." />
+      <div>写评论222</div>
     </div>
   </van-popup>
 </template>
 
 <script setup lang='ts'>
 import NavBar from '@/components/navBar.vue';
-import { onMounted, reactive, ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount,reactive,nextTick } from 'vue';
 import { getArticleViewApi, getArticleDetailApi } from '@/utils/api'
 import useCommon from '@/hooks/useCommon'
 const hooks = useCommon()
 let detailInfo = reactive({})
 const showBottomPopup = ref(false)
-const commentContent = ref('')
+const inputValue = ref('')
+const inputbox = ref<HTMLInputElement | null>(null)
+const isFixedInput = ref(false)
+const keyboardHeight = ref(0);
+// const handleResize = () => {
+//   inputbox.value?.addEventListener('focus',function(){
+//     const previousHeight = window.innerHeight;
+//     const documentHeight = document.documentElement.clientHeight
+//     keyboardHeight.value = documentHeight - previousHeight
+//   })
+// };
+
+const handleFocus = () => {
+  // 输入框获取焦点时，更新高度
+  // handleResize();
+};
+const handleBlur = () => {
+  alert(`键盘高度${keyboardHeight.value}`)
+
+  // 输入框失去焦点时，更新高度
+  keyboardHeight.value = 0;
+  isFixedInput.value = false
+
+};
+onBeforeUnmount(() => {
+  // 组件销毁时，移除事件监听
+  // window.removeEventListener('resize', handleResize);
+});
 onMounted(() => {
   console.log('接收参数', hooks.route)
+  // 监听 resize 事件
+  // window.addEventListener('resize', handleResize);
+  inputbox.value?.addEventListener('focus',function(){
+    const previousHeight = window.innerHeight;
+    const documentHeight = document.documentElement.clientHeight
+    keyboardHeight.value = documentHeight - previousHeight
+  })
+  
   getArticleView()
 })
+const onClickWrite = () => {
+  isFixedInput.value = true
+  nextTick(()=>{
+    // 在调用之前确保 inputbox.value 不为 null
+    if (inputbox.value) {
+        inputbox.value.focus();
+      }
+  })
+}
 const openPopup = () => {
   showBottomPopup.value = true
 }
@@ -69,15 +116,12 @@ const getArticleView = async () => {
     id: Number(hooks.route.query.articleId)
   })
   getArticleDetail()
-
 }
 const getArticleDetail = async () => {
   const res = await getArticleDetailApi({
     id: Number(hooks.route.query.articleId)
   })
-
   detailInfo = res.article
-
 }
 </script>
 <style lang="scss" scoped>
@@ -85,7 +129,6 @@ const getArticleDetail = async () => {
   border-radius: 8px 8px 0 0;
   padding-left: 10px;
   margin-top: 10px;
-
   .comment-value {
     font-size: 16px;
     color: #272d4d;
