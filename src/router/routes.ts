@@ -46,4 +46,13 @@ export const constantroute = [
             tabBar: false
         }
     },
+    {
+        path:'/echartsBar',
+        name:'EchartsBar',
+        component:() => import("../views/echartsBar.vue"),
+        meta: {
+            title:'echarts柱状图',
+            tabBar: false
+        }
+    },
 ]

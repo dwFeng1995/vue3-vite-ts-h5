@@ -60,7 +60,7 @@
   const loading = ref<boolean>(false);//将 loading 设置为 true，表示处于加载状态，不触发load事件，false--触发
   const finished = ref<boolean>(false);//将 finished 设置为 true，表示处于已加载完成，不触发load事件，false--触发
   const total = ref(0)
-  const container = ref<Object as PropType<Element>>(null);
+  const container = ref(null);
   const activeTab = ref('')
   const onClickTab = () =>{
     console.log('activeTab---',activeTab)
