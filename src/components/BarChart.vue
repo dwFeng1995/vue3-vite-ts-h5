@@ -63,12 +63,7 @@ const initChart = () => {
           symbolSize: [24, 24],
           silent: true,
           label: {
-            show: true,
-            formatter: data.markPointValue,
-            position: 'top',
-            distance: 10,
-            color: '#506dfe',
-            fontSize: 12
+            show: false
           },
           data: data.markPoints.map(index => ({
             xAxis: index,
@@ -91,7 +86,13 @@ const initChart = () => {
               width: 1
             },
             label: {
-              show: false  // 隐藏markLine的标签
+              show: true,
+              formatter: data.markPointValue,
+              position: 'start',
+              distance: 10,
+              color: '#506dfe',
+              fontSize: 12,
+              offset: [0, -20]
             }
           }))
         }

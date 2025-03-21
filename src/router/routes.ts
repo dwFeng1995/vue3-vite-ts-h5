@@ -55,4 +55,22 @@ export const constantroute = [
             tabBar: false
         }
     },
+    {
+        path:'/echartsRadar',
+        name:'EchartsRadar',
+        component:() => import("../views/echartsRadar.vue"),
+        meta: {
+            title:'echarts雷达图',
+            tabBar: false
+        }
+    },
+    {
+        path:'/echartsLine',
+        name:'EchartsLine',
+        component:() => import("../views/echartsLine.vue"),
+        meta: {
+            title:'echarts折线图',
+            tabBar: false
+        }
+    },
 ]
